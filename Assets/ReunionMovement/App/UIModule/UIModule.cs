@@ -193,6 +193,10 @@ namespace GameLogic
                     var uiBase = CreateUIController(uiObj, name);
                     uiLoadState.UIWindow = uiBase;
                 }
+                else
+                {
+                    uiLoadState.UIWindow = uiController;
+                }
                 uiLoadState.UIWindow.UIName = name;
                 uiLoadState.IsLoading = false;
                 uiLoadState.OpenWhenFinish = openWhenFinish;
