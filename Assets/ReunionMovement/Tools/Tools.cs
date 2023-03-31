@@ -91,12 +91,11 @@ namespace GameLogic
         /// 获取目标时间与当前时间的时间差
         /// </summary>
         /// <param name="target"></param>
-        /// <returns></returns>
+        /// <returns>可转换为天、小时、秒等</returns>
         public static TimeSpan GetTime(DateTime target)
         {
-            //timeA 表示需要计算
             DateTime current = DateTime.Now;	//获取当前时间
-            TimeSpan ts = current - target;	//计算时间差
+            TimeSpan ts = current - target;	    //计算时间差
             return ts;
         }
 
