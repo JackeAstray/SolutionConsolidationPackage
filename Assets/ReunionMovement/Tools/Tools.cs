@@ -755,6 +755,40 @@ namespace GameLogic
             float angel = Vector3.Angle(var1.forward, var2.forward);
             return angel;
         }
+
+        /// <summary>
+        /// 判断物体左右转转
+        /// </summary>
+        /// <param name="var1"></param>
+        /// <param name="var2"></param>
+        /// <returns></returns>
+        public static int RotationDirection(Transform var1, Transform var2)
+        {
+            int direction = 0;
+
+            Vector2 v1 = new Vector2(var1.forward.x, var1.forward.z); //旋转前的前方
+            Vector2 v2 = new Vector2(var2.forward.x, var2.forward.z); //旋转后的前方
+
+            float rightFloat = v1.x * v2.y - v2.x * v1.y;
+
+            if (rightFloat < 0)
+            {
+                //向右转了
+                direction = 1;
+            }
+            else if (rightFloat > 0)
+            {
+                //向左转了
+                direction = -1;
+            }
+            else
+            {
+                //没转
+                direction = 0;
+            }
+
+            return direction;
+        }
         #endregion
     }
 }
