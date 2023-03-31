@@ -88,6 +88,35 @@ namespace GameLogic
         }
 
         /// <summary>
+        /// 获得增加时间后的时间
+        /// </summary>
+        /// <param name="type">1、秒 2、分钟 3、小时 4、天</param>
+        /// <param name="value">索要添加的数值</param>
+        /// <returns></returns>
+        public static DateTime GetAddTime(int type,int value)
+        {
+            DateTime time = DateTime.Now;
+
+            switch(type)
+            {
+                case 1:
+                    time.AddSeconds(value);
+                    break;
+                case 2:
+                    time.AddMinutes(value);
+                    break;
+                case 3:
+                    time.AddHours(value);
+                    break;
+                case 4:
+                    time.AddDays(value);
+                    break;
+            }
+
+            return time;
+        }
+
+        /// <summary>
         /// 获取目标时间与当前时间的时间差
         /// </summary>
         /// <param name="target"></param>
