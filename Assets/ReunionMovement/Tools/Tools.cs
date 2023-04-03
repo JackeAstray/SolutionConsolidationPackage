@@ -96,24 +96,25 @@ namespace GameLogic
         public static DateTime GetAddTime(int type,int value)
         {
             DateTime time = DateTime.Now;
+            DateTime result = DateTime.Now;
 
-            switch(type)
+            switch (type)
             {
                 case 1:
-                    time.AddSeconds(value);
+                    result = time.AddSeconds(value);
                     break;
                 case 2:
-                    time.AddMinutes(value);
+                    result = time.AddMinutes(value);
                     break;
                 case 3:
-                    time.AddHours(value);
+                    result = time.AddHours(value);
                     break;
                 case 4:
-                    time.AddDays(value);
+                    result = time.AddDays(value);
                     break;
             }
 
-            return time;
+            return result;
         }
 
         /// <summary>
