@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.U2D;
 using Object = UnityEngine.Object;
 
 namespace GameLogic
@@ -69,6 +70,33 @@ namespace GameLogic
                 _resourceTable.Add(path, assets);
             }
             return assets;
+        }
+
+        /// <summary>
+        /// 从图集加载精灵
+        /// </summary>
+        /// <param name="atlasName">图集路径名称</param>
+        /// <param name="spriteName">精灵路径名称 </param>
+        /// <returns></returns>
+        public Sprite GetAtlasSprite(string atlasName, string spriteName)
+        {
+            SpriteAtlas atlas = Resources.Load<SpriteAtlas>(atlasName);
+            Sprite sprite = atlas.GetSprite(spriteName);
+
+            if (Tools.IsDebug())
+            {
+                if (atlas == null)
+                {
+                    Debug.LogError("图集：" + atlasName + "不存在，请检查！");
+                }
+
+                if (sprite == null)
+                {
+                    Debug.LogError(atlasName + " 图集中sprite" + spriteName + "不存在，请检查！");
+                }
+            }
+
+            return sprite;
         }
 
         /// <summary>

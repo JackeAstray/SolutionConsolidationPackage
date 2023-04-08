@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/ReunionMovement/Screen/ScreenResolution/Example/Scene.unity
-    guid: 163da320877d9104c9b5cfffcbf331ed
+    path: Assets/Scenes/StartGame.unity
+    guid: d1c3109bdb54ad54c8a2b2838528e640
+  - enabled: 1
+    path: Assets/Scenes/LoadingScene.unity
+    guid: 36df8e2e651b29446bc41e232971b151
   m_configObjects: {}
