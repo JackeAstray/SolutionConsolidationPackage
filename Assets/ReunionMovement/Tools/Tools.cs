@@ -836,6 +836,49 @@ namespace GameLogic
 
             return direction;
         }
+
+        /// <summary>
+        /// 车轮 - PID控制器
+        /// </summary>
+        /// <param name="wheel"></param>
+        /// <param name="var2"></param>
+        public static float PIDController(WheelCollider wheel, 
+                                         float targetSpeed,
+                                         float kp,
+                                         float ki,
+                                         float kd,
+                                         float integral,
+                                         float prevError)
+        {
+            // 获取当前车轮的转速
+            float currentSpeed = wheel.rpm * (Mathf.PI / 30.0f * wheel.radius);
+
+            // 计算速度误差
+            float error = targetSpeed - currentSpeed;
+
+            // 计算PID控制器的控制力
+            float proportional = kp * error;
+            integral += ki * error * Time.deltaTime;
+            float derivative = kd * (error - prevError) / Time.deltaTime;
+            float control = proportional + integral + derivative;
+
+            // 应用控制力到车轮
+            if (control > 0)
+            {
+                wheel.brakeTorque = 0.0f;
+                wheel.motorTorque = control;
+            }
+            else
+            {
+                wheel.brakeTorque = -control;
+                wheel.motorTorque = 0.0f;
+            }
+
+            // 更新速度误差和控制参数
+            prevError = error;
+
+            return integral;
+        }
         #endregion
     }
 }

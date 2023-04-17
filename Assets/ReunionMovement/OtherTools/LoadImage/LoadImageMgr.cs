@@ -91,7 +91,7 @@ namespace GameLogic.Download
             string savePath = GetLocalPath();
             try
             {
-                File.WriteAllBytes( string.Format("{0}/{1}.png", savePath , UnityUtil.MD5Encrypt(url)), bytes);
+                File.WriteAllBytes( string.Format("{0}/{1}.png", savePath , Tools.MD5Encrypt(url)), bytes);
             }
             catch(Exception ex)
             {

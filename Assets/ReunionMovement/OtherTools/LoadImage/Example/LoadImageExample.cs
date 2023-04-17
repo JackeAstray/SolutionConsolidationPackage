@@ -19,7 +19,7 @@ public class LoadImageExample : MonoBehaviour
 
     private void TestLoadImage()
     {
-        LoadImageHelper helper = gameObject.AddComponent<LoadImageHelper>();
-        helper.LoadImage(image, url);
+        //LoadImageHelper helper = gameObject.AddComponent<LoadImageHelper>();
+        //helper.LoadImage(image, url);
     }
 }
