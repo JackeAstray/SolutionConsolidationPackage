@@ -90,7 +90,7 @@ namespace GameLogic
         
         public void SaveConfig()
         {
-            string jsonStr = JsonMapper.ToJson(configs.ToList(), true);
+            string jsonStr = JsonMapper.ToJson(configs.Values.ToList(), true);
             PathUtils.WriteFile(jsonStr, filePath, fileName);
         }
     }

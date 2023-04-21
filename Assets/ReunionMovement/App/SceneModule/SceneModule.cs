@@ -11,7 +11,7 @@ namespace GameLogic
     /// <summary>
     /// 场景管理
     /// </summary>
-    public class SceneModule : MonoBehaviour, CustommModuleInitialize
+    public class SceneModule : CustommModuleInitialize
     {
         #region 实例与初始化
         //实例
@@ -33,6 +33,8 @@ namespace GameLogic
         private GameObject m_objLoadProgress = null;               // 加载进度显示对象
 
         private string m_showUI = "";  // 将要显示的UI
+
+        private Sprite m_sprite;  //
 
         //获取当前场景名
         public string s_strLoadedSceneName => Instance.m_strCurSceneName;
@@ -68,6 +70,11 @@ namespace GameLogic
             {
                 Debug.Log("SceneModule 清除数据");
             }
+        }
+
+        public void SetSprite(Sprite sprite)
+        {
+            m_sprite = sprite;
         }
 
         /// <summary>
@@ -138,7 +145,7 @@ namespace GameLogic
             m_strCurSceneName = m_strLoadSceneName;
 
             //先异步加载 Loading 界面
-            StartCoroutine(OnLoadingScene(OnLoadingSceneLoaded, LoadSceneMode.Single));
+            SceneSpriteMgr.Instance.StartCoroutine(OnLoadingScene(OnLoadingSceneLoaded, LoadSceneMode.Single));
         }
 
         /// <summary>
@@ -181,7 +188,7 @@ namespace GameLogic
         private void OnLoadingSceneLoaded()
         {
             // 过渡场景加载完成后加载下一个场景
-            StartCoroutine(OnLoadTargetScene(m_strTargetSceneName, LoadSceneMode.Single));
+            SceneSpriteMgr.Instance.StartCoroutine(OnLoadTargetScene(m_strTargetSceneName, LoadSceneMode.Single));
         }
 
         private IEnumerator OnLoadTargetScene(string strLevelName, LoadSceneMode loadSceneMode)
@@ -244,6 +251,9 @@ namespace GameLogic
             if (m_objLoadProgress == null)
             {
                 m_objLoadProgress = GameObject.Find("LoadingObj");
+
+                Image bg = GameObject.Find("BG").GetComponent<Image>();
+                bg.sprite = m_sprite;
 
                 if (m_objLoadProgress == null)
                 {
