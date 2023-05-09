@@ -220,7 +220,7 @@ namespace GameLogic
                 {
                     yield return new WaitForSeconds(0.2f);
                     async.allowSceneActivation = true;
-
+                    OnTargetSceneLoaded();
                     if (m_showUI != "null")
                     {
                         UIModule.Instance.OpenWindow(m_showUI);
@@ -228,7 +228,7 @@ namespace GameLogic
                 }
             }
 
-            OnTargetSceneLoaded();
+            
         }
 
         /// <summary>
