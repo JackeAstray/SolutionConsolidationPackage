@@ -218,9 +218,9 @@ namespace GameLogic
 
                 if (fProgressValue >= 0.9)
                 {
+                    OnTargetSceneLoaded();
                     yield return new WaitForSeconds(0.2f);
                     async.allowSceneActivation = true;
-                    OnTargetSceneLoaded();
                     if (m_showUI != "null")
                     {
                         UIModule.Instance.OpenWindow(m_showUI);
