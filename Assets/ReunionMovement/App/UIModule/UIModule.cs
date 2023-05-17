@@ -103,6 +103,7 @@ namespace GameLogic
 
             //create camera
             UICamera = new GameObject("UICamera").AddComponent<Camera>();
+            UICamera.GetUniversalAdditionalCameraData().renderType = CameraRenderType.Overlay;
             UICamera.transform.SetParent(UIRoot.transform, true);
             UICamera.cullingMask = (1 << (int)UnityLayerDef.UI);
             UICamera.clearFlags = CameraClearFlags.Depth;
