@@ -163,8 +163,10 @@ namespace GameLogic
                     break;
             }
 
-            canvas.renderMode = RenderMode.ScreenSpaceCamera;
-            canvas.worldCamera = UICamera;
+            if (canvas.renderMode == RenderMode.ScreenSpaceCamera)
+            {
+                canvas.worldCamera = UICamera;
+            }
         }
 
         /// <summary>
